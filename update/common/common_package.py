@@ -45,6 +45,10 @@ def move_other_resources_to_root(package_directory, name, relative_path):
     shutil.copyfile(relative_path, resource_file)
 
 
+def clean_up(package_directory):
+    shutil.rmtree(package_directory, ignore_errors=True)
+
+
 def zip_package(source_directory, working_dir, name):
     relroot = os.path.abspath(source_directory)
 
@@ -84,6 +88,7 @@ def create_pck__inf_file(package_directory, version, name, description):
 def create_subdirectory_tree(package_directory, name):
     sub_dir = os.path.join(package_directory, "bizerba", "update", "mod", name)
     os.makedirs(sub_dir, exist_ok=True)
+    return sub_dir
 
 
 def create_mod_info_file(package_directory, version, name, description):

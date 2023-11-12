@@ -1,7 +1,7 @@
 import os
 
 from update.common.common_package import create_working_directory, create_pck__inf_file, create_subdirectory_tree, \
-    create_mod_info_file, move_bash_script, zip_package
+    create_mod_info_file, move_bash_script, zip_package, clean_up
 from update.settings import tesco_settings, TESCO, BIZERBA, FAJNE, fajne_settings, bizerba_settings, \
     HUB_CONTAINER_REGISTRY_KEY, HUB_USER_KEY, HUB_PASS_KEY, KEY1, KEY2, GALG_MANAGER_URL_KEY
 
@@ -25,11 +25,12 @@ def create_galg_package_for_company(company_settings, company_name, version, tmp
     create_pck__inf_file(package_directory, version, update_package_name, description)
     create_subdirectory_tree(package_directory, update_package_name)
     create_mod_info_file(package_directory, version, update_package_name, description)
-    create_galg_install_script(package_directory, company_settings)
+    create_galg_install_script(package_directory, update_package_name, company_settings)
     zip_package(package_directory, tmp_dir, update_package_name)
+    clean_up(package_directory)
 
 
-def create_galg_install_script(package_directory, company):
+def create_galg_install_script(package_directory, inner_directory, company):
     with open(INSTALL_GALG_TEMPLATE, 'r') as file:
         data = file.read()
 
@@ -40,6 +41,6 @@ def create_galg_install_script(package_directory, company):
         data = data.replace(KEY2, company[HUB_PASS_KEY])
         data = data.replace(GALG_MANAGER_URL_KEY, company[GALG_MANAGER_URL_KEY])
 
-        script_file = os.path.join(package_directory, "bizerba", "update", "mod", INSTALL_GALG_SCRIPT)
+        script_file = os.path.join(package_directory, "bizerba", "update", "mod", inner_directory, INSTALL_GALG_SCRIPT)
         with open(script_file, "w") as output:
             output.write(data)
