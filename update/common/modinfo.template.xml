@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bizerba>
+	<modinfo>
+
+		<!-- module identification: capitals -->
+		<id>@@@NAME@@@</id>
+		<name>@@@NAME@@@</name>
+		<fullname>@@@FULL_NAME@@@</fullname>
+		<vendor>BIZERBA</vendor>
+
+		<!-- version info -->
+		<!-- major: without leading zeroes -->
+		<major>@@@MAJOR_VERSION@@@</major>
+		<!-- minor: without leading zeroes -->
+		<minor>@@@MINOR_VERSION@@@</minor>
+		<!-- build: without leading zeroes -->
+		<build>@@@BUILD_VERSION@@@</build>
+
+		<date>@@@DATE@@@</date>
+
+		<!-- version check -->
+		<!-- Compatible until major-version (optional) -->
+		<compatible></compatible>
+		<!-- upgrade: will be installed in case of an upgrade (optional): 0, no, oder NO bzw. 1, yes oder YES -->
+		<upgrade></upgrade>
+		<!-- downgrade: will be installed in case of a downgrade (optional): 0, no, oder NO bzw. 1, yes oder YES -->
+		<downgrade></downgrade>
+
+		<!-- force: Perform no version check: 0, no, oder NO bzw. 1, yes oder YES -->
+		<force>1</force>
+
+		<!-- module dependencies: Modul-ID of dependend moduld, optionally you could specify a major version number: major=version -->
+		<!-- <depends major="3" condition="-ge">modulez</depends> -->
+
+		<depends></depends>
+
+		<!-- modules to stop: Modul-ID -->
+		<!--stop_before_install></stop_before_install-->
+
+		<!-- modules to start: Modul-ID -->
+		<!--
+		<start_before_install>bizretail_bsp</start_before_install>
+		-->
+
+		<!-- installation script: attribut platform (optional: LINUX, WINDOWS) -->
+		<install>bizerba/update/mod/@@@NAME@@@/bizinstall.sh</install>
+
+		<!-- uninstall script with absolute path: attribut platform (optional: LINUX, WINDOWS) -->
+		<!-- LINUX: Could use placeholder $BIZSTORECARD for /bizstorecard -->
+		<!-- WINDOWS: Could use placeholder %BIZSTORECARD% for /bizstorecard -->
+		<uninstall></uninstall>
+
+		<!-- root privilegues necessary for scripts: 0, no, oder NO bzw. 1, yes oder YES -->
+		<root>1</root>
+
+		<!-- reboot necessary after installation: 0, no, oder NO bzw. 1, yes oder YES -->
+		<reboot>0</reboot>
+
+	</modinfo>
+</bizerba>

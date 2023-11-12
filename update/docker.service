@@ -1,0 +1,13 @@
+[Unit]
+Description=Docker 17.0 service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+ExecStart=/usr/bin/dockerd
+
+[Install]
+WantedBy=multi-user.target

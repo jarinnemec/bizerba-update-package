@@ -1,0 +1,32 @@
+#!/bin/sh
+
+echo -e "Logging docker hub\n"
+docker login -u @@@HUB_USER@@@ -p @@@HUB_PASS@@@ @@@HUB_CONTAINER_REGISTRY@@@
+
+echo -e "Stop all docker containers\n"
+docker rm $(docker kill $(docker ps -q --format="{{.ID}}"))
+
+echo -e "Stop all not stopped containers\n"
+docker kill $(docker ps -q)
+
+echo -e "Remove containers\n"
+docker rm -vf $(docker ps -aq)
+
+echo -e "Remove images\n"
+docker rmi --force $(docker images -aq)
+
+echo -e "Prune system\n"
+docker system prune
+
+echo -e "List containers. Should be empty \n"
+docker container ls
+
+echo -e "Pull latest GALG\n"
+docker pull @@@HUB_CONTAINER_REGISTRY@@@/galg:latest
+
+echo -e "Pull latest GALG-KEEPER\n"
+docker pull @@@HUB_CONTAINER_REGISTRY@@@/galg-keeper:latest
+
+echo -e "Restart service\n"
+docker run --net=host --detach --restart=always -e KEY1=@@@KEY1@@@ -e KEY2=@@@KEY2@@@ -v /bizstorecard:/bizstorecard @@@HUB_CONTAINER_REGISTRY@@@/galg-keeper:latest --url=@@@GALG_MANAGER_URL_KEY@@@
+docker run --net=host --detach --restart=always -e KEY1=@@@KEY1@@@ -e KEY2=@@@KEY2@@@ -v /bizstorecard:/bizstorecard @@@HUB_CONTAINER_REGISTRY@@@/galg:latest

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bizerba>
+
+	<!-- version of package description -->
+	<packageinfoversion>300</packageinfoversion>
+
+	<!-- container package or not: 0, no, oder NO bzw. 1, yes oder YES -->
+	<container>0</container>
+
+	<!-- package with signature or not: 0, no, oder NO bzw. 1, yes oder YES -->
+	<signature>0</signature>
+
+	<!-- global operating system check: LINUX, WINDOWS -->
+	<platform>@@@OS@@@</platform>
+
+	<!-- package identification -->
+	<name>@@@NAME@@@</name>
+	<fullname>@@@FULL_NAME@@@</fullname>
+	<!-- vendor: Firma, Abteilung, Namenskürzel -->
+	<vendor>BIZERBA, cz_machd</vendor>
+
+	<!-- version info -->
+	<major>0</major>
+	<!-- minor: without leading zeroes -->
+	<minor>3</minor>
+	<!-- build: without leading zeroes -->
+	<build>0001</build>
+
+	<date>@@@DATE@@@</date>
+	<matno></matno>
+
+	<!-- additional tags for legacy mode -->
+	<text>@@@DESCRIPTION@@@</text>
+	<description>@@@DESCRIPTION@@@</description>
+	<!-- legacy version: versionnumber in the form major.minor.build -->
+	<version>@@@VERSION@@@</version>
+	<installation_sequence></installation_sequence>
+	<time>@@@TIME@@@</time>
+	<stoff></stoff>
+	<!-- legacy package type: DATA, PROG, SILENT, RETAIL -->
+	<type>SILENT</type>
+	<!-- legacy operating system: WEPOS, NLPOS, CE600 -->
+	<os>NLPOS</os>
+
+</bizerba>

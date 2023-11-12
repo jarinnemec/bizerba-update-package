@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo "Stop existing docker service"
+echo " "
+sudo systemctl stop docker
+sudo systemctl stop docker17
+
+echo "Unpacking docker archive"
+echo " "
+tar xzvf ./docker.tgz
+echo "Copy docker binaries to the /usr/bin"
+echo " "
+cp docker/* /usr/bin
+
+echo "Creating service file"
+echo " "
+cp docker.service /etc/systemd/system/docker.service
+
+echo "Restarting docker service"
+echo " "
+sudo systemctl daemon-reload
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+
+
+echo DOCKER_OPTS=\"--insecure-registry=@@@HUB_CONTAINER_REGISTRY@@@\" | tee /etc/sysconfig/docker
+echo {\"insecure-registries\":[\"@@@HUB_CONTAINER_REGISTRY@@@\"]}  | tee /etc/docker/daemon.json
+
+sudo systemctl restart docker
+
+echo -e "Logging docker hub\n"
+docker login -u @@@HUB_USER@@@ -p @@@HUB_PASS@@@ @@@HUB_CONTAINER_REGISTRY@@@
