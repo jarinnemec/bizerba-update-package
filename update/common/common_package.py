@@ -49,10 +49,10 @@ def clean_up(package_directory):
     shutil.rmtree(package_directory, ignore_errors=True)
 
 
-def zip_package(source_directory, working_dir, name):
+def zip_package(source_directory, working_dir, name, version):
     relroot = os.path.abspath(source_directory)
 
-    output_filename = os.path.join(working_dir, name + ".zip")
+    output_filename = os.path.join(working_dir, f"{name}_{version}.zip")
 
     with zipfile.ZipFile(output_filename, "w", zipfile.ZIP_DEFLATED) as zip:
         for dirname, subdirs, files in os.walk(source_directory):

@@ -26,7 +26,7 @@ def create_galg_package_for_company(company_settings, company_name, version, tmp
     create_subdirectory_tree(package_directory, update_package_name)
     create_mod_info_file(package_directory, version, update_package_name, description)
     create_galg_install_script(package_directory, update_package_name, company_settings)
-    zip_package(package_directory, tmp_dir, update_package_name)
+    zip_package(package_directory, tmp_dir, update_package_name, version)
     clean_up(package_directory)
 
 

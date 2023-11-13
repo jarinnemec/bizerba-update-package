@@ -28,7 +28,7 @@ def create_docker_package_for_company(company_settings, company_name, version, t
     create_docker_install_script(package_directory, update_package_name, company_settings)
     move_other_resources_to_root(package_directory, update_package_name, "./install_docker/docker.service")
     move_other_resources_to_root(package_directory, update_package_name, "./install_docker/docker.tgz")
-    zip_package(package_directory, tmp_dir, update_package_name)
+    zip_package(package_directory, tmp_dir, update_package_name, version)
     clean_up(package_directory)
 
 
