@@ -6,7 +6,7 @@ from update.settings import tesco_settings, TESCO, BIZERBA, FAJNE, fajne_setting
     HUB_CONTAINER_REGISTRY_KEY, HUB_USER_KEY, HUB_PASS_KEY, KEY1, KEY2, GALG_MANAGER_URL_KEY
 
 INSTALL_GALG_TEMPLATE = "./install_galg/install_galg.template"
-INSTALL_GALG_SCRIPT = "install_galg.sh"
+INSTALL_GALG_SCRIPT = "bizinstall.sh"
 
 
 def create_galg_package_for_all_companies(version, tmp_dir, output_dir):
@@ -18,7 +18,7 @@ def create_galg_package_for_all_companies(version, tmp_dir, output_dir):
 def create_galg_package_for_company(company_settings, company_name, version, tmp_dir, output_dir):
 
     description = "Install galg server and galg keeper"
-    update_package_name = f"Install_galg_solution_{company_name}_{version}"
+    update_package_name = f"galg_solution_{company_name}"
 
     package_directory = os.path.join(tmp_dir, update_package_name)
     create_working_directory(package_directory)
@@ -42,5 +42,5 @@ def create_galg_install_script(package_directory, inner_directory, company):
         data = data.replace(GALG_MANAGER_URL_KEY, company[GALG_MANAGER_URL_KEY])
 
         script_file = os.path.join(package_directory, "bizerba", "update", "mod", inner_directory, INSTALL_GALG_SCRIPT)
-        with open(script_file, "w") as output:
-            output.write(data)
+        with open(script_file, "wb") as output:
+            output.write(str.encode(data))

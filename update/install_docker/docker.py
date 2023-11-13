@@ -6,7 +6,7 @@ from update.settings import TESCO, BIZERBA, FAJNE, tesco_settings, bizerba_setti
     HUB_CONTAINER_REGISTRY_KEY, HUB_USER_KEY, HUB_PASS_KEY
 
 INSTALL_DOCKER_TEMPLATE = "./install_docker/install_docker.template"
-INSTALL_DOCKER_SCRIPT = "install_docker.sh"
+INSTALL_DOCKER_SCRIPT = "bizinstall.sh"
 
 
 def create_docker_package_for_all_companies(version, tmp_dir, output_dir):
@@ -17,7 +17,7 @@ def create_docker_package_for_all_companies(version, tmp_dir, output_dir):
 
 def create_docker_package_for_company(company_settings, company_name, version, tmp_dir, output_dir):
     description = "Install system docker packages"
-    update_package_name = f"Install_docker_linux_{company_name}_{version}"
+    update_package_name = f"docker_linux_{company_name}"
 
     package_directory = os.path.join(tmp_dir, update_package_name)
     create_working_directory(package_directory)
@@ -41,5 +41,5 @@ def create_docker_install_script(package_directory, inner_directory, company):
         data = data.replace(HUB_PASS_KEY, company[HUB_PASS_KEY])
 
         script_file = os.path.join(package_directory, "bizerba", "update", "mod", inner_directory, INSTALL_DOCKER_SCRIPT)
-        with open(script_file, "w") as output:
-            output.write(data)
+        with open(script_file, "wb") as output:
+            output.write(str.encode(data))

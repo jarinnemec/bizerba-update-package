@@ -29,4 +29,6 @@ echo {\"insecure-registries\":[\"@@@HUB_CONTAINER_REGISTRY@@@\"]}  | tee /etc/do
 sudo systemctl restart docker
 
 echo -e "Logging docker hub\n"
-docker login -u @@@HUB_USER@@@ -p @@@HUB_PASS@@@ @@@HUB_CONTAINER_REGISTRY@@@
+sudo docker login -u @@@HUB_USER@@@ -p @@@HUB_PASS@@@ @@@HUB_CONTAINER_REGISTRY@@@
+
+echo "Install docker script done"

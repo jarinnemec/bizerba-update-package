@@ -21,16 +21,16 @@ tesco_settings = {
 }
 
 bizerba_settings = {
-    HUB_CONTAINER_REGISTRY_KEY: "bizerba.azurecr.io",
-    HUB_PASS_KEY: "+EIMNbRyDl7QxjWKtSkXGaN8Y4BOzEGZQDJHxq8yMi+ACRAWbYE+",
-    HUB_USER_KEY: "Fajne-read",
+    HUB_CONTAINER_REGISTRY_KEY: "bizerbacz.azurecr.io",
+    HUB_PASS_KEY: "NAhWozqTsrQG4MFQmJLFilcROiHzT48PTd7kmlEcTI+ACRBePJZp",
+    HUB_USER_KEY: "bizerbacz",
     GALG_MANAGER_URL_KEY: "100.127.192.10:10002",
     KEY1: "L7UAHVAJUy6wPfhmUgpPJg==",
     KEY2: "y0tSLhbfbGjHFghQWzpwQQ==",
 }
 
 fajne_settings = {
-    HUB_CONTAINER_REGISTRY_KEY: "bizerba.azurecr.io",
+    HUB_CONTAINER_REGISTRY_KEY: "bizerbacz.azurecr.io",
     HUB_PASS_KEY: "+EIMNbRyDl7QxjWKtSkXGaN8Y4BOzEGZQDJHxq8yMi+ACRAWbYE+",
     HUB_USER_KEY: "Fajne-read",
     GALG_MANAGER_URL_KEY: "100.127.192.10:10002",

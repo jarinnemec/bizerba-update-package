@@ -35,12 +35,10 @@
 		<depends></depends>
 
 		<!-- modules to stop: Modul-ID -->
-		<!--stop_before_install></stop_before_install-->
+		<stop_before_install></stop_before_install>
 
 		<!-- modules to start: Modul-ID -->
-		<!--
-		<start_before_install>bizretail_bsp</start_before_install>
-		-->
+		<!--  <start_before_install>bizretail_bsp</start_before_install> -->
 
 		<!-- installation script: attribut platform (optional: LINUX, WINDOWS) -->
 		<install>bizerba/update/mod/@@@NAME@@@/bizinstall.sh</install>
